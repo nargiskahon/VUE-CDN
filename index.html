@@ -12,19 +12,58 @@
 <body>
 
 <div id="app">
-    <button @click="minusCount">-</button>
 
-    <h1 :class="color">{{ count }}</h1>
+    <h1>{{ title }}</h1>
+    <form>
+        <input
+                type="text"
+                placeholder="enter information..."
+                v-model="topic">
+        <p>Topic name is - {{ topic }}</p>
+    </form>
+    <ul class="list">
+        <li v-for="(note, i) in list" :key="note.id">
+<!--            {{ note }}-->
+            <p>Id: {{note.id}}</p>
+            <p>Names: {{note.name}}</p>
+            <p>{{i}}</p>
+        </li>
 
-    <button @click="addCount">+</button>
+    </ul>
+
+
+    <div class="counter">
+        <button @click="minusCount">-</button>
+        <h1 :class="color">{{ count }}</h1>
+        <button @click="addCount">+</button>
+    </div>
+
 
     <div class="box">
         <input :type="view ? 'text' : 'password'">
-
         <button @click="view = !view">
-            {{ view ? 'false' : 'show' }}
+            {{ view ? 'hide' : 'show' }}
         </button>
     </div>
+    <div class="box">
+        <input
+                type="text"
+                v-model="name">
+        <p>Your name: {{ name }}</p>
+    </div>
+    <div class="box">
+        <input type="text" v-model="word">
+        <p v-if="word.length === 0">Your input area is empty</p>
+        <p v-else-if="word.length > 0 && word.length < 5">Something was written</p>
+        <p v-else>Information written</p>
+    </div>
+    <div class="box">
+        <h2 v-if="view">First text</h2>
+        <h2 v-show="view">Second text</h2>
+        <button @click="view = !view">click</button>
+    </div>
+
+
 </div>
 
 

@@ -1,11 +1,27 @@
 
 
+let id =1
+
+
 const app = {
     data() {
         return {
             count: 0,
             color: "red",
-            view: false
+            view: true,
+            view: false,
+            showText: true,
+            topic: '',
+            name: '',
+            word: '',
+
+            title: 'Aylanmalar',
+
+            list: [
+                {id: id++, name: 'Html'},
+                {id: id++, name: 'Javascript'},
+                {id: id++, name: 'CSS'}
+            ]
         }
     },
 
