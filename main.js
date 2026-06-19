@@ -1,5 +1,11 @@
 
 
+// let form =document.querySelector('form')
+//
+//  form.addEventListener('submit', (event) => {
+//      event.preventDefault()
+//  })
+
 let id =1
 
 
@@ -9,14 +15,12 @@ const app = {
             count: 0,
             color: "red",
             view: true,
-            view: false,
             showText: true,
-            topic: '',
+            text: '',
             name: '',
             word: '',
-
-            title: 'Aylanmalar',
-
+            title: 'Loops',
+            open: false,
             list: [
                 {id: id++, name: 'Html'},
                 {id: id++, name: 'Javascript'},
@@ -25,7 +29,29 @@ const app = {
         }
     },
 
+    computed: {
+        getListLength() {
+            return this.list.length;
+        }
+    },
+
+
     methods: {
+        delNote(note) {
+            // console.log(note);
+       this.list = this.list.filter(item=>item.id !== note.id)
+        },
+    addNote () {
+        if(this.text.length > 1 && isNaN(this.text)) {
+            this.list.push({
+                id: id++,
+                name: this.text
+            })
+            this.text = ''
+        }
+    },
+
+
         addCount() {
             this.count++
         },
